@@ -7,6 +7,8 @@ services:
     tty: true
     restart: unless-stopped
     image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    networks:
+      - care-companion-network
 
   open-webui:
     build:
@@ -26,6 +28,12 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
+    networks:
+      - care-companion-network
+
+networks:
+  care-companion-network:
+    external: true
 
 volumes:
   ollama: {}
