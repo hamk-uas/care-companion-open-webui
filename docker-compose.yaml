@@ -22,6 +22,8 @@ services:
       - ollama
     ports:
       - ${OPEN_WEBUI_PORT-3000}:8080
+    env_file:
+      - .env
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
       - 'WEBUI_SECRET_KEY='
@@ -33,6 +35,7 @@ services:
 
 networks:
   care-companion-network:
+    name: care-companion-network
     external: true
 
 volumes:
