@@ -17,6 +17,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # Upstream-only release process; skip on forks
+    if: github.repository == 'open-webui/open-webui'
     permissions:
       contents: write
       actions: write
